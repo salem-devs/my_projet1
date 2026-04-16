@@ -1,0 +1,117 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8rem 2rem;
+}
+
+.sectionTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 4rem;
+  letter-spacing: -0.02em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 240px;
+  gap: 1.5rem;
+}
+
+.card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+  cursor: default;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.card:hover .glow {
+  opacity: 1;
+}
+
+.large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.medium {
+  grid-column: span 2;
+}
+
+.small {
+  grid-column: span 1;
+}
+
+.icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .icon {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: white;
+}
+
+.cardDesc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.5;
+}
+
+.glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.06), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .large {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+  .large, .medium, .small {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .sectionTitle {
+    font-size: 2.2rem;
+  }
+}
