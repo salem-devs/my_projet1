@@ -4,6 +4,11 @@ export default function Hero() {
   return (
     <section id="hero" className={styles.hero}>
       <div className={styles.backgroundGlow}></div>
+      <div className={styles.artContainer}>
+        <div className={styles.blob1}></div>
+        <div className={styles.blob2}></div>
+        <div className={styles.blob3}></div>
+      </div>
       <div className={styles.content}>
         <div className={styles.badge}>
           {/* <span>V1.0.0 is </span> */}
