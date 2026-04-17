@@ -37,35 +37,35 @@
 .blob1, .blob2, .blob3 {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.5;
+  filter: blur(80px); /* Légèrement moins de flou pour plus de netteté */
+  opacity: 0.8; /* Augmentation forte de l'opacité */
 }
 
 .blob1 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 80%);
   top: -100px;
   right: -50px;
   animation: floatLarge 15s infinite ease-in-out;
 }
 
 .blob2 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--secondary) 0%, transparent 80%);
   bottom: -150px;
   left: -100px;
   animation: floatLarge 20s infinite ease-in-out reverse;
 }
 
 .blob3 {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-  top: 40%;
-  left: 30%;
-  opacity: 0.2;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 80%);
+  top: 30%;
+  left: 20%;
+  opacity: 0.4;
   animation: pulseBlob 10s infinite alternate;
 }
 

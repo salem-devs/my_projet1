@@ -28,7 +28,8 @@ const items = [
   }
 ];
 
-export default function BentoGrid() {
+export default function BentoGrid() 
+{
   return (
     <section id="features" className={styles.container}>
       <h2 className={styles.sectionTitle}>Conçu pour l'<span className="text-gradient">Excellence</span></h2>
