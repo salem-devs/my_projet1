@@ -61,7 +61,7 @@ export default function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.panoBackground}>
-        <PanoramaViewer imagePath="/360hd.png" />
+        <PanoramaViewer imagePath="/hd.png" />
       </div>
       <div className={styles.heroOverlay}></div>
       
