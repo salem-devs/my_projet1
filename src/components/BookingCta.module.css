@@ -1,0 +1,174 @@
+/* ═══════════════════ BOOKING CTA ═══════════════════ */
+
+.container {
+  padding: 60px 5% 120px;
+  position: relative;
+}
+
+/* Grande carte principale */
+.glassCard {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 50, 100, 0.55) 0%,
+    rgba(20, 0, 80, 0.45) 50%,
+    rgba(0, 20, 60, 0.55) 100%
+  );
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-radius: 48px;
+  padding: 90px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow:
+    0 40px 100px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    0 0 0 1px rgba(0,229,255,0.08);
+}
+
+/* Lueur de fond animée */
+.glassCard::before {
+  content: '';
+  position: absolute;
+  top: -40%; left: -10%;
+  width: 60%;
+  height: 160%;
+  background: radial-gradient(ellipse, rgba(0,229,255,0.12) 0%, transparent 65%);
+  animation: pulseGlow 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.glassCard::after {
+  content: '';
+  position: absolute;
+  bottom: -30%; right: -5%;
+  width: 50%;
+  height: 120%;
+  background: radial-gradient(ellipse, rgba(120,0,255,0.1) 0%, transparent 65%);
+  animation: pulseGlow 7s ease-in-out infinite 2s;
+  pointer-events: none;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+.content {
+  flex: 1;
+  max-width: 580px;
+  z-index: 2;
+  position: relative;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--primary), #0096c7);
+  color: #000;
+  padding: 7px 18px;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  margin-bottom: 28px;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 20px rgba(0,229,255,0.4);
+}
+
+.title {
+  font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.08;
+  margin-bottom: 22px;
+  color: var(--fg);
+}
+
+.desc {
+  font-size: 1.1rem;
+  color: rgba(180, 200, 240, 0.8);
+  margin-bottom: 44px;
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ── Partie droite : badges flottants ── */
+.visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.floatingBadges {
+  position: relative;
+  width: 100%;
+  height: 280px;
+}
+
+.badge {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  padding: 14px 26px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  color: var(--fg);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  transition: border-color 0.3s ease;
+}
+
+.badge:hover { border-color: rgba(0,229,255,0.4); }
+
+.b1 {
+  top: 8%; right: 8%;
+  animation: floatBadge 5s ease-in-out infinite;
+  border-color: rgba(0,229,255,0.2);
+}
+.b2 {
+  top: 42%; left: 5%;
+  animation: floatBadge 6.5s ease-in-out infinite 1.2s;
+  border-color: rgba(167,139,250,0.2);
+}
+.b3 {
+  bottom: 8%; right: 18%;
+  animation: floatBadge 7s ease-in-out infinite 0.6s;
+  border-color: rgba(0,255,136,0.2);
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-12px) rotate(-1deg); }
+  66% { transform: translateY(-6px) rotate(1deg); }
+}
+
+@media (max-width: 1024px) {
+  .glassCard {
+    flex-direction: column;
+    padding: 60px 40px;
+    text-align: center;
+  }
+  .content { margin-bottom: 60px; }
+  .actions { justify-content: center; }
+  .visual { width: 100%; }
+  .floatingBadges { height: 220px; }
+}
+
+@media (max-width: 640px) {
+  .glassCard { padding: 50px 28px; border-radius: 32px; }
+  .title { font-size: 2.2rem; }
+}

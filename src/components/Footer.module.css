@@ -1,101 +1,151 @@
+/* ═══════════════════ FOOTER ═══════════════════ */
+
 .footer {
-  background: #000;
-  border-top: 1px solid var(--card-border);
-  padding: 5rem 2rem 2rem;
-  margin-top: 4rem;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 120%, rgba(0,100,200,0.12) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(6,11,20,0) 0%, #040810 100%);
+  border-top: 1px solid rgba(0,229,255,0.1);
+  padding: 90px 5% 50px;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0,229,255,0.3), transparent);
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 64px;
+}
+
+.brand .logo {
+  margin-bottom: 20px;
+}
+
+.brandDesc {
+  color: rgba(136,153,187,0.8);
+  margin-top: 8px;
+  max-width: 300px;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* ── Réseaux sociaux ── */
+.socials {
   display: flex;
-  justify-content: space-between;
-  gap: 4rem;
-  margin-bottom: 5rem;
+  gap: 14px;
+  margin-top: 28px;
 }
 
-.brand span {
-  font-size: 1.5rem;
-  font-weight: 800;
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.brand p {
-  color: rgba(255, 255, 255, 0.5);
-  max-width: 250px;
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-.links {
+.socials a {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(100,160,255,0.15);
   display: flex;
-  gap: 5rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg);
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
-.column h4 {
-  font-size: 0.9rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: white;
+.socials a:hover {
+  background: linear-gradient(135deg, var(--primary), #0096c7);
+  color: #000;
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,229,255,0.35);
 }
 
-.column {
+/* ── Liens ── */
+.links, .contact {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 14px;
 }
 
-.column a {
+.links h4, .contact h4 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.4);
-  transition: color 0.3s;
-}
-
-.column a:hover {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--primary);
+  margin-bottom: 8px;
 }
 
+.links a {
+  text-decoration: none;
+  color: rgba(136,153,187,0.8);
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.links a:hover {
+  color: var(--fg);
+  transform: translateX(4px);
+}
+
+/* ── Contact ── */
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(136,153,187,0.8);
+  font-size: 0.95rem;
+}
+
+.contactItem svg {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* ── Bas de page ── */
 .bottom {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.05);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: rgba(255, 255, 255, 0.3);
-  font-size: 0.8rem;
+  color: rgba(100,120,160,0.7);
+  font-size: 0.88rem;
 }
 
-.social {
+.bottomLinks {
   display: flex;
-  gap: 1.5rem;
+  gap: 28px;
 }
 
-.social a {
-  font-weight: 700;
-  transition: color 0.3s;
+.bottomLinks a {
+  text-decoration: none;
+  color: rgba(100,120,160,0.7);
+  transition: color 0.2s ease;
 }
 
-.social a:hover {
-  color: white;
-}
+.bottomLinks a:hover { color: var(--primary); }
 
 @media (max-width: 768px) {
   .container {
-    flex-direction: column;
-    gap: 3rem;
-  }
-  .links {
-    gap: 2rem;
-    flex-wrap: wrap;
+    grid-template-columns: 1fr;
+    gap: 44px;
   }
   .bottom {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 16px;
     text-align: center;
   }
 }

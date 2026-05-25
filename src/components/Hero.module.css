@@ -1,191 +1,230 @@
-@keyframes floatX {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(50px); }
-}
-
-@keyframes floatY {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-50px); }
-}
-
-@keyframes pulseBlob {
-  from { transform: scale(1); opacity: 0.2; }
-  to { transform: scale(1.2); opacity: 0.4; }
-}
+/* ═══════════════════ HERO ═══════════════════ */
 
 .hero {
-  position: relative;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 1rem;
+  justify-content: space-between;
+  position: relative;
   overflow: hidden;
+  padding: var(--nav-height) 5% 0;
 }
 
-.backgroundGlow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, var(--secondary-glow) 0%, transparent 70%);
-  filter: blur(80px);
-  z-index: -1;
-  animation: floatY 10s infinite alternate ease-in-out;
-}
-
-.artContainer {
+.panoBackground {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  z-index: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  /* Retour à l'ambiance originale : léger voile sur les côtés et presque transparent au centre */
+  background: linear-gradient(100deg, rgba(6,11,20,0.5) 0%, rgba(6,11,20,0.1) 50%, rgba(6,11,20,0.5) 100%);
   z-index: 1;
   pointer-events: none;
 }
 
-.blob1, .blob2, .blob3 {
+/* Overlay gradient côté gauche pour la lisibilité du texte (maintenant géré par heroOverlay) */
+
+.bubblesLayer {
   position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.bubble {
+  position: absolute;
+  width: 12px; height: 12px;
+  background: rgba(0, 229, 255, 0.15);
+  border: 1px solid rgba(0, 229, 255, 0.35);
   border-radius: 50%;
-  filter: blur(100px);
+  filter: blur(1px);
 }
 
-.blob1 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-  top: -50px;
-  right: -50px;
-  opacity: 0.4;
-  animation: floatX 8s infinite alternate ease-in-out;
+.glowOverlay {
+  position: absolute;
+  top: 5%; right: -5%;
+  width: 55%; height: 75%;
+  background: radial-gradient(circle, rgba(0,229,255,0.12) 0%, transparent 65%);
+  z-index: 1;
+  pointer-events: none;
 }
 
-.blob2 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
-  bottom: -100px;
-  left: -50px;
-  opacity: 0.3;
-  animation: floatY 12s infinite alternate ease-in-out;
+.content {
+  flex: 1;
+  z-index: 10;
+  max-width: 680px;
 }
 
-.blob3 {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-  top: 40%;
-  left: 30%;
-  animation: pulseBlob 6s infinite alternate ease-in-out;
-}
-
+/* ── Badge haut de page ── */
 .badge {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--card-border);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 32px;
+  background: rgba(0,229,255,0.08);
+  border: 1px solid rgba(0,229,255,0.2);
+  padding: 8px 18px 8px 14px;
   border-radius: 100px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--primary);
-  margin-bottom: 2rem;
-  animation: fadeIn 1s ease-out;
 }
 
+.badgeLine {
+  width: 28px; height: 1px;
+  background: var(--primary);
+}
+
+.badge span {
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* ── Titre principal ── */
 .title {
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(3.2rem, 6.5vw, 5.5rem);
   font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.04em;
-  margin-bottom: 1.5rem;
-  animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1);
+  line-height: 1.03;
+  margin-bottom: 28px;
+  letter-spacing: -0.03em;
+  
+  color: var(--fg);
+  text-shadow: 0 8px 32px rgba(0,0,0,0.6);
 }
 
 .subtitle {
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.6);
-  max-width: 600px;
-  margin: 0 auto 3rem;
-  line-height: 1.6;
-  animation: slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  line-height: 1.75;
+  color: rgba(180, 200, 240, 0.75);
+  margin-bottom: 44px;
+  max-width: 520px;
 }
 
 .actions {
   display: flex;
-  gap: 1rem;
-  justify-content: center;
-  animation: slideUp 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  gap: 18px;
+  flex-wrap: wrap;
 }
 
-.primaryBtn {
-  background: white;
-  color: black;
-  border: none;
-  padding: 1rem 2rem;
-  font-weight: 700;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+/* ── Sphère flottante ── */
+.visualContainer {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 10;
 }
 
-.primaryBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+.crystalSphere {
+  width: 400px; height: 400px;
+  position: relative;
 }
 
-.secondaryBtn {
-  background: transparent;
-  color: white;
-  border: 1px solid var(--card-border);
-  padding: 1rem 2rem;
-  font-weight: 600;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.secondaryBtn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: white;
-}
-
-.visual {
-  position: absolute;
-  bottom: -100px;
-  z-index: 1;
-}
-
-.sphere {
-  width: 400px;
-  height: 400px;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+.glassInner {
+  width: 100%; height: 100%;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.3;
-  animation: float 10s infinite ease-in-out;
+  background: linear-gradient(145deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow:
+    0 40px 80px -10px rgba(0,0,0,0.8),
+    inset 0 0 50px rgba(0,229,255,0.15),
+    inset 0 -20px 40px rgba(0,0,0,0.8),
+    0 0 0 1px rgba(0,229,255,0.08);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes pulse {
-  from { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
-  to { opacity: 0.8; transform: translate(-50%, -50%) scale(1.2); }
+.heroImage {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transform: scale(1.06);
+  filter: contrast(1.15) brightness(1.1) saturate(1.1);
+  opacity: 0.75;
 }
 
-@keyframes slideUp {
-  from { transform: translateY(30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+.sphereContent {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  pointer-events: none;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.reflectionOverlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.28) 0%,
+    rgba(255,255,255,0) 40%
+  );
+  border-radius: 50%;
+  pointer-events: none;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-30px) scale(1.1); }
+/* ── Tag promo flottant ── */
+.floatingTag {
+  position: absolute;
+  bottom: 18%;
+  right: -24px;
+  background: linear-gradient(135deg, rgba(0,229,255,0.12), rgba(0,0,0,0.6));
+  backdrop-filter: blur(12px);
+  padding: 12px 24px;
+  border-radius: 100px;
+  border: 1px solid rgba(0,229,255,0.3);
+  font-weight: 700;
+  color: var(--primary);
+  font-family: 'Outfit', sans-serif;
+  box-shadow: 0 8px 32px rgba(0,229,255,0.2), 0 4px 20px rgba(0,0,0,0.4);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: floatTag 4s ease-in-out infinite;
+}
+
+@keyframes floatTag {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 160px;
+    padding-bottom: 80px;
+    justify-content: center;
+    gap: 60px;
+  }
+  .content {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .actions { justify-content: center; }
+  .badge { justify-content: center; }
+  .crystalSphere { width: 320px; height: 320px; }
+  .floatingTag { right: 0; }
+  .visualContainer { justify-content: center; }
+}
+
+@media (max-width: 640px) {
+  .crystalSphere { width: 280px; height: 280px; }
+  .title { font-size: 2.8rem; }
 }
